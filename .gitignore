@@ -83,8 +83,6 @@ nb-configuration.xml
 ##############################
 .DS_Store
 
-
-
 # Miscellaneous
 *.class
 *.log
