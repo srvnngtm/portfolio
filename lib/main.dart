@@ -8,7 +8,16 @@ void main() {
   );
 }
 
-class Portfolio extends StatelessWidget {
+class Portfolio extends StatefulWidget {
+  @override
+  State<Portfolio> createState() => _PortfolioState();
+}
+
+class _PortfolioState extends State<Portfolio> {
+
+  int currentSemester = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +28,13 @@ class Portfolio extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         elevation: 0,
       ),
+      floatingActionButton: FloatingActionButton(onPressed:() {
+        setState(() {
+          currentSemester+=1;
+        });
+      },
+        child: Icon(Icons.add),
+      ),
       body: Padding(
         padding: EdgeInsets.all(25),
         child: Column(
@@ -27,7 +43,7 @@ class Portfolio extends StatelessWidget {
             const Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage("assets/saranImage.jpeg"),
-                radius: 150,
+                radius: 100,
               ),
             ),
             Divider(
@@ -85,9 +101,30 @@ class Portfolio extends StatelessWidget {
                     fontSize: 18,
                     letterSpacing: 1,
                   ),
-                )
+                ),
+
               ],
-            )
+            ),
+            const SizedBox(height: 30),
+
+            const Text(
+              "CURRENT SEMESTER",
+              style: TextStyle(
+                  color: Colors.white70,
+                  letterSpacing: 2.0
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              "$currentSemester",
+              style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.amberAccent[200],
+                  letterSpacing: 2.0,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+
           ],
         ),
       )
